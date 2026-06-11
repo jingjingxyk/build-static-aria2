@@ -48,9 +48,9 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='3.90'
+APP_VERSION='4.33'
 APP_NAME='seaweedfs'
-VERSION='3.90'
+VERSION='4.33'
 
 cd ${__PROJECT__}
 mkdir -p runtime/
