@@ -33,9 +33,9 @@ cd ${__PROJECT__}/chromium
 
 if [ -d depot_tools ]; then
   cd depot_tools
-  git pull
+  git pull origin main
 else
-  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  git clone -b main https://chromium.googlesource.com/chromium/tools/depot_tools.git
 fi
 cd ${__PROJECT__}/
 
