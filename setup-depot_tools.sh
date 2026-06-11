@@ -52,9 +52,9 @@ exit 0
 
 if [ -d gn ]; then
   cd gn
-  git pull
+  git pull origin main
 else
-  git clone https://gn.googlesource.com/gn
+  git clone -b main https://gn.googlesource.com/gn
 fi
 cd ${__PROJECT__}/var/gn
 python3 build/gen.py
