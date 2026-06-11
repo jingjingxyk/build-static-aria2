@@ -55,7 +55,7 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='v2025.628.4510'
+APP_VERSION='v2026.516.143833'
 APP_NAME='sunshine'
 VERSION="${APP_VERSION}"
 

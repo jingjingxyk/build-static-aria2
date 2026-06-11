@@ -28,8 +28,8 @@ while [ $# -gt 0 ]; do
   shift $(($# > 0 ? 1 : 0))
 done
 
-mkdir -p ${__PROJECT__}/var/
-cd ${__PROJECT__}/var/
+mkdir -p ${__PROJECT__}/chromium
+cd ${__PROJECT__}/chromium
 
 if [ -d depot_tools ]; then
   cd depot_tools
@@ -37,11 +37,17 @@ if [ -d depot_tools ]; then
 else
   git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 fi
-cd ${__PROJECT__}/var/
+cd ${__PROJECT__}/
 
-export PATH=${__PROJECT__}/var/depot_tools::$PATH
+export PATH=${__PROJECT__}/chromium/depot_tools::$PATH
+
+# 方法一：运行 gclient（最常用）
+gclient
+
+# 方法二：运行专门的初始化脚本（如果上面不行）
+# ensure_bootstrap
+
 gn -v
-
 exit 0
 
 if [ -d gn ]; then
