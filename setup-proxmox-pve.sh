@@ -20,7 +20,7 @@ cd ${__PROJECT__}/var/
 # https://www.proxmox-pve.com.c
 # https://pve.proxmox.com/wiki/Main_Page
 
-# curl -LSo proxmox-ve_9.0-1.iso https://mirrors.cqupt.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso
+# curl -LSo proxmox-ve_9.1-1.iso https://mirrors.ustc.edu.cn/proxmox/iso/proxmox-ve_9.1-1.iso
 
 if [ -f runtime/aria2c/aria2c ]; then
   curl -fSL https://gitee.com/jingjingxyk/swoole-cli/raw/new_dev/setup-aria2-runtime.sh?raw=ture | bash -s -- --mirror china
@@ -28,13 +28,12 @@ fi
 export PATH="${__PROJECT__}/runtime/aria2c/:$PATH"
 which aria2c
 
-aria2c -c -x4 -s8 \
-  https://mirrors.bfsu.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso \
-  https://mirrors.cqupt.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso \
-  https://mirrors.hit.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso \
-  https://mirror.iscas.ac.cn/proxmox/iso/proxmox-ve_9.0-1.iso \
-  https://mirror.nju.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso \
-  https://mirrors.tuna.tsinghua.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso
+aria2c --file-allocation=none -c -x16 -s16 -j5 \
+  https://mirrors.bfsu.edu.cn/proxmox/iso/proxmox-ve_9.1-1.iso \
+  https://mirrors.hit.edu.cn/proxmox/iso/proxmox-ve_9.1-1.iso \
+  https://mirror.iscas.ac.cn/proxmox/iso/proxmox-ve_9.1-1.iso \
+  https://mirror.nju.edu.cn/proxmox/iso/proxmox-ve_9.1-1.iso \
+  https://mirrors.tuna.tsinghua.edu.cn/proxmox/iso/proxmox-ve_9.1-1.iso
 
-# https://mirror.nyist.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso \
-# https://mirrors.ustc.edu.cn/proxmox/iso/proxmox-ve_9.0-1.iso
+# https://mirror.nyist.edu.cn/proxmox/iso/proxmox-ve_9.1-1.iso \
+# https://mirrors.ustc.edu.cn/proxmox/iso/proxmox-ve_9.1-1.iso

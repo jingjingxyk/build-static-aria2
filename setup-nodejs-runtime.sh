@@ -52,9 +52,9 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='v22.16.0'
+APP_VERSION='v24.16.0'
 APP_NAME='node'
-VERSION='v22.16.0'
+VERSION='v24.16.0'
 
 cd ${__PROJECT__}
 mkdir -p runtime/
@@ -66,14 +66,14 @@ cd ${__PROJECT__}/var/runtime
 
 : <<'EOF'
 https://nodejs.org/
-https://nodejs.org/dist/v22.16.0/node-v22.16.0-darwin-x64.tar.gz
-https://nodejs.org/dist/v22.16.0/node-v22.16.0-darwin-x64.tar.gz
-https://nodejs.org/dist/v22.16.0/node-v22.16.0-darwin-arm64.tar.gz
-https://nodejs.org/dist/v22.16.0/node-v22.16.0-linux-arm64.tar.xz
-https://nodejs.org/dist/v22.16.0/node-v22.16.0-linux-arm64.tar.xz
-https://nodejs.org/dist/v22.16.0/node-v22.16.0-win-arm64.zip
-https://nodejs.org/dist/v22.16.0/node-v22.16.0-win-x64.zip
-https://registry.npmmirror.com/-/binary/node/v22.16.0/node-v22.16.0-win-x64.zip
+https://nodejs.org/dist/v24.16.0/node-v24.16.0-darwin-x64.tar.gz
+https://nodejs.org/dist/v24.16.0/node-v24.16.0-darwin-x64.tar.gz
+https://nodejs.org/dist/v24.16.0/node-v24.16.0-darwin-arm64.tar.gz
+https://nodejs.org/dist/v24.16.0/node-v24.16.0-linux-arm64.tar.xz
+https://nodejs.org/dist/v24.16.0/node-v24.16.0-linux-arm64.tar.xz
+https://nodejs.org/dist/v24.16.0/node-v24.16.0-win-arm64.zip
+https://nodejs.org/dist/v24.16.0/node-v24.16.0-win-x64.zip
+https://registry.npmmirror.com/-/binary/node/v24.16.0/node-v24.16.0-win-x64.zip
 EOF
 
 APP_DOWNLOAD_URL="https://nodejs.org/dist/${VERSION}/${APP_NAME}-${APP_VERSION}-${OS}-${ARCH}.tar.xz"

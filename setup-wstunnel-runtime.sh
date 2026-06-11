@@ -48,9 +48,9 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='10.4.2'
+APP_VERSION='10.5.5'
 APP_NAME='wstunnel'
-VERSION='v10.4.2'
+VERSION='v10.5.5'
 
 cd ${__PROJECT__}
 mkdir -p runtime/

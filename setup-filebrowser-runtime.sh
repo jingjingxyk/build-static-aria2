@@ -48,7 +48,7 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='v2.36.0'
+APP_VERSION='v2.63.14'
 APP_NAME='filebrowser'
 VERSION="${APP_VERSION}"
 

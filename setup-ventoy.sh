@@ -31,14 +31,18 @@ done
 mkdir -p ${__PROJECT__}/var/
 cd ${__PROJECT__}/var/
 
+APP_VERSION='1.1.12'
+APP_NAME='ventoy'
+VERSION='v1.1.12'
+
 # ventoy
 # show file
 # https://sourceforge.net/projects/ventoy/files
 # homepage
 # https://www.ventoy.net/cn/
 
-curl -LSo ventoy-1.1.05-livecd.iso https://github.com/ventoy/Ventoy/releases/download/v1.1.05/ventoy-1.1.05-livecd.iso
-curl -LSo ventoy-1.1.05-linux.tar.gz https://github.com/ventoy/Ventoy/releases/download/v1.1.05/ventoy-1.1.05-linux.tar.gz
+curl -LSo ventoy-${APP_VERSION}-livecd.iso https://github.com/ventoy/Ventoy/releases/download/${VERSION}/ventoy-${APP_VERSION}-livecd.iso
+curl -LSo ventoy-${APP_VERSION}-linux.tar.gz https://github.com/ventoy/Ventoy/releases/download/${VERSION}/ventoy-${APP_VERSION}-linux.tar.gz
 
 # iventor PXE
 # homepage

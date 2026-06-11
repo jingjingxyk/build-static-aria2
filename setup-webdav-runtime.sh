@@ -48,9 +48,9 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='v5.7.4'
+APP_VERSION='v5.11.10'
 APP_NAME='webdav'
-VERSION='v5.7.4'
+VERSION='v5.11.10'
 
 cd ${__PROJECT__}
 mkdir -p runtime/

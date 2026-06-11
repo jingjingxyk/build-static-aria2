@@ -71,9 +71,9 @@ while [ $# -gt 0 ]; do
   shift $(($# > 0 ? 1 : 0))
 done
 
-APP_VERSION='v1.959.0'
+APP_VERSION='v3.84.0'
 APP_NAME='casdoor'
-VERSION='v1.959.0'
+VERSION='v3.84.0'
 
 cd ${__PROJECT__}
 mkdir -p runtime/

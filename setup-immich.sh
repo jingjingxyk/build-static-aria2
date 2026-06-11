@@ -50,9 +50,9 @@ esac
 
 
 
-APP_VERSION='v1.135.3'
+APP_VERSION='v2.7.5'
 APP_NAME='immich'
-VERSION='v1.135.3'
+VERSION='v2.7.5'
 
 cd ${__PROJECT__}
 mkdir -p runtime/

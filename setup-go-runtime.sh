@@ -48,9 +48,9 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='1.24.4'
+APP_VERSION='1.26.4'
 APP_NAME='go'
-VERSION='1.24.4'
+VERSION='1.26.4'
 
 cd ${__PROJECT__}
 mkdir -p runtime/
@@ -64,10 +64,10 @@ cd ${__PROJECT__}/var/runtime
 
 https://go.dev/dl/
 
-https://go.dev/dl/go1.22.5.darwin-arm64.pkg
+https://go.dev/dl/go1.26.4.darwin-arm64.pkg
 
-https://go.dev/dl/go1.22.5.darwin-amd64.pkg
-https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
+https://go.dev/dl/go1.26.4.darwin-amd64.pkg
+https://go.dev/dl/go1.26.4.linux-amd64.tar.gz
 https://go.dev/dl/go1.21.12.linux-arm64.tar.gz
 https://go.dev/dl/go1.21.12.windows-amd64.zip
 https://go.dev/dl/go1.21.12.darwin-arm64.tar.gz

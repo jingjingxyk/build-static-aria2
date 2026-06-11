@@ -72,9 +72,9 @@ if [ "${OS}" == "macos" ]; then
   esac
 fi
 
-APP_VERSION='3.1.0'
+APP_VERSION='1.14.1'
 APP_NAME='websocat'
-VERSION='v1.14.0'
+VERSION='v1.14.1'
 
 cd ${__PROJECT__}
 mkdir -p runtime/

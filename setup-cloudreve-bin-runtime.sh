@@ -48,9 +48,9 @@ case $ARCH in
   ;;
 esac
 
-APP_VERSION='4.2.0'
+APP_VERSION='4.16.1'
 APP_NAME='cloudreve'
-VERSION='4.2.0'
+VERSION='4.16.1'
 
 cd ${__PROJECT__}
 mkdir -p runtime/

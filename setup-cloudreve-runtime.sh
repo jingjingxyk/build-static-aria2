@@ -118,7 +118,7 @@ if [ -d Cloudreve ]; then
   cd Cloudreve
   git submodule update --init --recursive --progress
 else
-  git clone -b 4.2.0 --recurse-submodules https://github.com/cloudreve/Cloudreve.git
+  git clone -b 4.16.1 --recurse-submodules https://github.com/cloudreve/Cloudreve.git
   cd Cloudreve
 fi
 cd ${__PROJECT__}/var/runtime/${APP_NAME}-code/Cloudreve
