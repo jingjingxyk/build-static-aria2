@@ -60,7 +60,7 @@ cd ${__PROJECT__}/var/gn
 python3 build/gen.py
 ninja -C out
 
-export PATH=${__PROJECT__}/var/depot_tools:${__PROJECT__}/var/gn/out/:$PATH
+export PATH=${__PROJECT__}/chromium/depot_tools:${__PROJECT__}/chromium/gn/out/:$PATH
 gn -v
 gn --help
 
