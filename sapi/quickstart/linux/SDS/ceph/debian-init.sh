@@ -12,6 +12,6 @@ timedatectl set-timezone UTC
 
 # https://docs.ceph.com/en/latest/cephadm/install/#cephadm-deploying-new-cluster
 
-CEPH_RELEASE=19.2.4
+CEPH_RELEASE=20.2.1
 curl -LSo /usr/local/bin/cephadm https://download.ceph.com/rpm-${CEPH_RELEASE}/el9/noarch/cephadm
 chmod a+x /usr/local/bin/cephadm

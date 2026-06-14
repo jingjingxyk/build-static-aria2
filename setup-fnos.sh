@@ -20,7 +20,7 @@ cd ${__PROJECT__}/var/
 # https://help.fnnas.com/articles/v1/start/install-os
 
 ISO_FILE=fnos_Mainland-PE_x86_1.1.3107_1809.iso
-SIGN="sign=21385392b28d293e44954f011251c0f5&t=1781187612"
+SIGN="sign=a1f440bb167e2e9ecf61e087a36a0115&t=1781240883"
 
 # curl -LSo ${ISO_FILE} "https://iso.liveupdate.fnnas.com/x86_64/trim/${ISO_FILE}?${SIGN}"
 
