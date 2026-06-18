@@ -27,6 +27,9 @@ cd ${APP_NAME}
 # https://archive.openwrt.org/releases/
 # https://archive.openwrt.org/releases/25.12.3/targets/x86/generic/
 
+# 参考文档
+# https://openwrt.org/docs/guide-user/virtualization/virtualbox-vm
+
 # curl -LSo openwrt-25.12.3-x86-generic-generic-ext4-combined.img.gz https://archive.openwrt.org/releases/25.12.3/targets/x86/generic/openwrt-25.12.3-x86-generic-generic-ext4-combined.img.gz
 
 if [ -f runtime/aria2c/aria2c ]; then
@@ -48,12 +51,15 @@ test -f openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img && rm -f openwrt
 gzip -c openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img.gz >openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img
 
 # 将文件填充到对其
-truncate -s 13M openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img
+test -f openwrt.img && rm -f openwrt.img
+dd if=openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img of=openwrt.img bs=128000 conv=sync
 
 # img 文件转换为 vdi
 test -f openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi && rm -f openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
-VBoxManage convertfromraw --format VDI openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
+VBoxManage convertdd openwrt.img openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
 
-# 修改磁盘大小
-VBoxManage modifyhd --resize 8096 openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
+# 显示vdi 信息
 VBoxManage showhdinfo openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
+
+# 修改磁盘大小 8GB
+VBoxManage modifymedium openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi --resize 8096
