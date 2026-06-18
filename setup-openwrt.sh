@@ -75,7 +75,7 @@ dd if=openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img of=openwrt.img bs=
 
 # img 文件转换为 vdi
 test -f openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi && rm -f openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
-VBoxManage convertfromraw --format VDI openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.img openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
+VBoxManage convertfromraw --format VDI openwrt.img openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
 
 # 显示vdi 信息
 VBoxManage showhdinfo openwrt-${APP_VERSION}-x86-64-generic-ext4-combined.vdi
