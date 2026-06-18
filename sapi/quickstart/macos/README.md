@@ -40,3 +40,19 @@ ls -lh ~/Library/Caches
 # macports 用于老版本 macos
 
     https://www.macports.org/install.php
+
+## 测试 macos 环境
+
+`
+
+xcode-select --install
+sudo xcode-select -s /Library/Developer/CommandLineTools
+
+xcode-select --print-path
+
+git --version
+clang --version
+make --version
+cmake --version
+
+`
