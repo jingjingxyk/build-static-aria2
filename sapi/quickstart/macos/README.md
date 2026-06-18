@@ -35,3 +35,24 @@ ls -lh ~/Library/Caches
 
 > 用这个名称 `host.docker.internal` 保证本机 IP 变化，服务仍然可用
 
+> host.docker.internal:host-gateway
+
+# macports 用于老版本 macos
+
+    https://www.macports.org/install.php
+
+## 测试 macos 环境
+
+`
+
+xcode-select --install
+sudo xcode-select -s /Library/Developer/CommandLineTools
+
+xcode-select --print-path
+
+git --version
+clang --version
+make --version
+cmake --version
+
+`
