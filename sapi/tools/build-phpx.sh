@@ -43,7 +43,7 @@ cd ${APP_RUNTIME_DIR}
 
 if [ -d phpx ] ;then
   cd phpx
-  git pull
+  git pull origin master
 else
   git clone https://github.com/swoole/phpx.git
 fi
@@ -54,8 +54,9 @@ export PATH="${__PROJECT__}/runtime/php/:$PATH"
 alias php="php -c ${__PROJECT__}/runtime/php/php.ini"
 
 cd phpx
-pwd
-bash ./build.sh
+cmake .
+make -j 4
+sudo make install
 
 chmod a+x ${APP_RUNTIME_DIR}/phpx/bin/phpx
 cp -f ${APP_RUNTIME_DIR}/phpx/bin/phpx ${__PROJECT__}/runtime/php/
