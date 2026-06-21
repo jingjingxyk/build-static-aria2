@@ -7,13 +7,14 @@ __DIR__=$(
 
 cd ${__DIR__}
 
-test -f /etc/opkg/distfeeds.conf.back || cp /etc/opkg/distfeeds.conf /etc/opkg/distfeeds.conf.back
-sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
+test -f /etc/apk/repositories.d/distfeeds.list.bak || cp /etc/apk/repositories.d/distfeeds.list /etc/apk/repositories.d/distfeeds.list.bak
+sed -i.bak 's_https\?://downloads.openwrt.org_https://mirrors.tuna.tsinghua.edu.cn/openwrt_' /etc/apk/repositories.d/distfeeds.list
+
 # 更新索引
-opkg update
+apk update
 # 安装中文语言包
-opkg install luci-i18n-base-zh-cn
+apk install luci-i18n-base-zh-cn
 
 # 包安装命令
-opkg install luci-theme-material
-opkg install curl bash git xz unzip
+apk install luci-theme-material
+apk install curl bash git xz unzip
