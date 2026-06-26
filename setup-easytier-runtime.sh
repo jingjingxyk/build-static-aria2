@@ -17,6 +17,9 @@ https://github.com/EasyTier/EasyTier/releases/tag/v2.6.4
 # 配置助手
 https://easytier.rs/assistant/
 
+
+sudo apt install -y p7zip-full
+
 EOF
 
 OS=$(uname -s)
