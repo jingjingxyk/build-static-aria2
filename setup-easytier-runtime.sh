@@ -9,8 +9,13 @@ __PROJECT__=${__DIR__}
 shopt -s expand_aliases
 cd ${__PROJECT__}
 
-: <<<EOF
+<<'EOF'
+# 文档
+https://easytier.cn/
+# 下载地址
 https://github.com/EasyTier/EasyTier/releases/tag/v2.6.4
+# 配置助手
+https://easytier.rs/assistant/
 
 EOF
 
@@ -110,3 +115,6 @@ downloader() {
 test -f ${APP_NAME}-${OS}-${ARCH}-${APP_VERSION}.zip || downloader ${APP_NAME}-${OS}-${ARCH}-${APP_VERSION}.zip ${APP_DOWNLOAD_URL}
 
 7z x ${APP_NAME}-${OS}-${ARCH}-${APP_VERSION}.zip -aoa -y -o${APP_NAME}-${OS}-${ARCH}-${APP_VERSION}
+
+cd ${APP_NAME}-${OS}-${ARCH}-${APP_VERSION}
+cp -rf ${APP_NAME}-${OS}-${ARCH}/* $APP_RUNTIME_DIR
