@@ -62,13 +62,10 @@ mkdir -p ${APP_RUNTIME_DIR}
 
 cd ${__PROJECT__}/var/runtime
 
-# https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz
-# https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linuxarm64-gpl.tar.xz
+
 APP_DOWNLOAD_URL="https://github.com/yt-dlp/FFmpeg-Builds/releases/download/${VERSION}/${APP_NAME}-${APP_VERSION}-${VERSION}-${OS}${ARCH}-gpl.tar.xz"
 
 if [ $OS = 'win' ]; then
-  # https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip
-  # https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-winarm64-gpl.zip
   APP_DOWNLOAD_URL="https://github.com/yt-dlp/FFmpeg-Builds/releases/download/${VERSION}/${APP_NAME}-${APP_VERSION}-${VERSION}-${OS}${ARCH}-gpl.zip"
 fi
 
@@ -97,9 +94,9 @@ done
 
 case "$MIRROR" in
 china)
-  APP_DOWNLOAD_URL="https://php-cli.jingjingxyk.com/${APP_NAME}-${APP_VERSION}-${VERSION}-${OS}${ARCH}-gpl.tar.xz"
+  APP_DOWNLOAD_URL="https://storage.jingjingxyk.com/${APP_NAME}-${APP_VERSION}-${VERSION}-${OS}${ARCH}-gpl.tar.xz"
   if [ $OS = 'win' ]; then
-    APP_DOWNLOAD_URL="https://php-cli.jingjingxyk.com/${APP_NAME}-${APP_VERSION}-${VERSION}-${OS}${ARCH}-gpl.zip"
+    APP_DOWNLOAD_URL="https://storage.jingjingxyk.com/${APP_NAME}-${APP_VERSION}-${VERSION}-${OS}${ARCH}-gpl.zip"
   fi
   ;;
 
@@ -134,7 +131,7 @@ echo " USE FFMPEG RUNTIME :"
 echo " "
 echo " export PATH=\"${APP_RUNTIME_DIR}:\$PATH\" "
 echo " "
-echo " ./bin/runtime/yt-dlp-ffmpeg/ffmpeg -h "
+echo " ./runtime/yt-dlp-ffmpeg/ffmpeg -h "
 echo " "
 echo " ffmpeg docs : https://ffmpeg.org/documentation.html "
 echo " ffmpeg docs : https://github.com/yt-dlp/FFmpeg-Builds "
