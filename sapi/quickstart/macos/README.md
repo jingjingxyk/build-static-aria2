@@ -56,3 +56,20 @@ make --version
 cmake --version
 
 `
+
+## 对于老款macos 使用 macports
+
+```bash
+# 下载 macports
+bash sapi/quickstart/macos/macports-download.sh
+# 进入 var 目录 手动安装 macports
+
+# 换源
+# sudo vi /opt/local/etc/macports/sources.conf
+
+sudo sed -i '' 's|^rsync://macports\.org.*$default$$|#&|' /opt/local/etc/macports/sources.conf
+
+sudo port -v sync
+
+sudo port selfupdate
+```
