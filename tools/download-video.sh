@@ -47,6 +47,13 @@ uv python dir
 # uv python list
 # uv python find 3.13
 uv python find
+
+uv python find 3.14
+PYTHON_BIN_PATH=$(uv python find 3.14)
+PYTHON_BIN_PATH=${PYTHON_BIN_PATH:0:-10}
+export PATH="$PYTHON_BIN_PATH":$PATH;
+uv tool install "yt-dlp[default,curl-cffi]"
+
 # export UV_PYTHON="/usr/bin/python3.12"
 uv run python --version
 
