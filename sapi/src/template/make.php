@@ -15,16 +15,23 @@ ROOT=<?= $this->getRootDir() . PHP_EOL ?>
 PREPARE_ARGS="<?= implode(' ', $this->getPrepareArgs())?>"
 export LOGICAL_PROCESSORS=<?= trim($this->logicalProcessors). PHP_EOL ?>
 export CMAKE_BUILD_PARALLEL_LEVEL=<?= $this->maxJob. PHP_EOL ?>
+
 <?php if ($this->getOsType() == 'linux') : ?>
 export OS_RELEASE=$(awk -F= '/^ID=/{print $2}' /etc/os-release |tr -d '\n' | tr -d '\"')
 <?php else : ?>
 export OS_RELEASE='macos'
 <?php endif ; ?>
 
+<?php if ($this->isMacos()) :?>
+# 兼容 最低 macOS 版本
+export MACOSX_DEPLOYMENT_TARGET=12.0
+<?php endif; ?>
+
 export CC=<?= $this->cCompiler . PHP_EOL ?>
 export CXX=<?= $this->cppCompiler . PHP_EOL ?>
 export LD=<?= $this->lld . PHP_EOL ?>
-
+export AR=<?= $this->ar . PHP_EOL ?>
+export AS=<?= $this->as . PHP_EOL ?>
 
 export SYSTEM_ORIGIN_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
 export PKG_CONFIG_PATH=<?= implode(':', $this->pkgConfigPaths) . PHP_EOL ?>
@@ -328,13 +335,14 @@ export_variables() {
 <?php if ($this->isLinux()) : ?>
     # 手动指定依赖库链接顺序
     <?php if ($this->hasLibrary('pgsql')) : ?>
-        export LIBS="$LIBS -lcrypto -lssl -lpgcommon -lpgport -lpq"
+        export LIBS=" -lcrypto -lssl  -lpq -lpgcommon -lpgport  $LIBS"
+        export LDFLAGS=" $LDFLAGS <?= PGSQL_PREFIX ?>/lib/libpq.a <?= PGSQL_PREFIX ?>/lib/libpgcommon.a <?= PGSQL_PREFIX ?>/lib/libpgport.a"
     <?php endif; ?>
     <?php if ($this->hasExtension('phpy')) : ?>
         export LIBS="$LIBS -lcrypto -lssl -lmpdec -lmpdec++ -lbz2 -llzma -lHacl_Hash_SHA2 -lb2 -lexpat -lxml2 -lform -lmenu  -ltic -lpanel -lncurses++ -lncurses "
     <?php endif; ?>
 <?php endif; ?>
-<?php if ($this->isLinux() && ($this->get_C_COMPILER() == 'musl-gcc')) : ?>
+<?php if ($this->isLinux() && ($this->getCCOMPILER() == 'musl-gcc')) : ?>
     ln -sf /usr/include/linux/ /usr/include/x86_64-linux-musl/linux
     ln -sf /usr/include/x86_64-linux-gnu/asm/ /usr/include/x86_64-linux-musl/asm
     ln -sf /usr/include/asm-generic/ /usr/include/x86_64-linux-musl/asm-generic
@@ -377,6 +385,7 @@ filter_extension() {
     test -d session    && cp -rf session $PHP_SRC_EXT_DIR
     test -d random     && cp -rf random $PHP_SRC_EXT_DIR
     test -d phar       && cp -rf phar $PHP_SRC_EXT_DIR
+    test -d uri        && cp -rf uri $PHP_SRC_EXT_DIR
 <?php foreach ($this->extensionList as $value) : ?>
     test -d <?= $value->name ?> && cp -rf <?= $value->name ?> $PHP_SRC_EXT_DIR
 <?php endforeach; ?>
@@ -490,7 +499,7 @@ make_config() {
         test -f ./configure.backup && rm -f ./configure.backup
     <?php endif; ?>
 <?php endif; ?>
-
+   ./configure --help
     export_variables
     export LDFLAGS="$LDFLAGS <?= $this->extraLdflags ?>"
     export EXTRA_CFLAGS='<?= $this->extraCflags ?>'
@@ -560,8 +569,13 @@ make_build_old() {
     cd <?= $this->phpSrcDir . PHP_EOL ?>
     export_variables
     <?php if ($this->isLinux()) : ?>
-    export LDFLAGS="$LDFLAGS  -static -all-static "
-    <?php endif ;?>
+    export CFLAGS="$CFLAGS  "
+    export LDFLAGS="$LDFLAGS  -static -all-static"
+    <?php if ($this->getInputOption('with-static-pie')) : ?>
+    export CFLAGS="$CFLAGS  -fPIE"
+    export LDFLAGS="$LDFLAGS -static-pie"
+    <?php endif ; ?>
+    <?php endif ; ?>
     export LDFLAGS="$LDFLAGS   <?= $this->extraLdflags ?>"
     export EXTRA_CFLAGS='<?= $this->extraCflags ?>'
     <?php if(!empty($this->httpProxy)) : ?>
@@ -578,8 +592,11 @@ make_build_old() {
     xattr -cr <?= $this->phpSrcDir  ?>/sapi/cli/php
     otool -L <?= $this->phpSrcDir  ?>/sapi/cli/php
 <?php else : ?>
+    { ldd <?= $this->phpSrcDir  ?>/sapi/cli/php ; } || { echo $? ; }
     file <?= $this->phpSrcDir  ?>/sapi/cli/php
     readelf -h <?= $this->phpSrcDir  ?>/sapi/cli/php
+    { readelf -l <?= $this->phpSrcDir  ?>/sapi/cli/php ; } || { echo $? ; }
+    { objdump -p <?= $this->phpSrcDir  ?>/sapi/cli/php ; } || { echo $? ; }
 <?php endif; ?>
 
     # make install
@@ -592,6 +609,7 @@ make_build_old() {
     <?= BUILD_PHP_INSTALL_PREFIX ?>/bin/php -v
 
     # elfedit --output-osabi linux sapi/cli/php
+
 }
 
 make_archive() {
@@ -717,6 +735,22 @@ lib_dep() {
 # ${#array_name[*]}
 # ${#array_name[@]}
 
+make_swoole_cli_with_linux_gcc() {
+    if [ ! -f bin/swoole-cli ] ;then
+        ./buildconf --force
+        ./sapi/scripts/build-swoole-cli-with-linux-gcc.sh
+    fi
+}
+
+make_nfpm_pkg() {
+    make_swoole_cli_with_linux_gcc
+    ./bin/swoole-cli sapi/scripts/copy-depend-libs.php
+    patchelf --force-rpath --set-rpath '/usr/local/swoole-cli/lib' bin/swoole-cli
+    NFPM_PKG_FILENAME=swoole-cli-<?=$this->getSwooleVersion()?>-linux-<?=$this->getSystemArch()?>-glibc
+    nfpm pkg --config nfpm-pkg.yaml --target "${NFPM_PKG_FILENAME}.rpm"
+    nfpm pkg --config nfpm-pkg.yaml --target "${NFPM_PKG_FILENAME}.deb"
+    return 0
+}
 
 help() {
     echo "./make.sh docker-build [ china | ustc | tuna ]"
@@ -742,6 +776,7 @@ help() {
     echo "./make.sh list-swoole-branch"
     echo "./make.sh switch-swoole-branch"
     echo "./make.sh [library-name]"
+    echo "./make.sh nfpm-pkg"
     echo  "./make.sh clean-[library-name]"
     echo  "./make.sh clean-[library-name]-cached"
     echo  "./make.sh clean"
@@ -750,14 +785,6 @@ help() {
 if [ "$1" = "docker-build" ] ;then
     MIRROR=""
     CONTAINER_BASE_IMAGE='docker.io/library/alpine:3.18'
-    if [ -n "$2" ]; then
-        MIRROR=$2
-        case "$MIRROR" in
-        china | openatom)
-            CONTAINER_BASE_IMAGE="docker.io/library/alpine:3.18"
-        ;;
-        esac
-    fi
     PLATFORM=''
     ARCH=$(uname -m)
     case $ARCH in
@@ -890,6 +917,8 @@ elif [ "$1" = "list-extension" ] ;then
     echo "<?= $item->name ?>"
 <?php endforeach; ?>
     exit 0
+elif [ "$1" = "nfpm-pkg" ] ;then
+    make_nfpm_pkg
 elif [ "$1" = "clean" ] ;then
     make_clean
     exit 0
@@ -905,7 +934,7 @@ elif [ "$1" = "variables" ] ;then
 	echo $LIBS
 elif [ "$1" = "sync" ] ;then
     PHP_CLI=$(which php)
-    test -f ${__PROJECT_DIR__}/bin/runtime/php && PHP_CLI="${__PROJECT_DIR__}/bin/runtime/php -c ${__PROJECT_DIR__}/bin/runtime/php.ini -d curl.cainfo=${__PROJECT_DIR__}/bin/runtime/cacert.pem -d openssl.cafile=${__PROJECT_DIR__}/bin/runtime/cacert.pem"
+    test -f ${__PROJECT_DIR__}/runtime/php/php && PHP_CLI="${__PROJECT_DIR__}/runtime/php/php -d curl.cainfo=${__PROJECT_DIR__}/runtime/php/cacert.pem -d openssl.cafile=${__PROJECT_DIR__}/runtime/php/cacert.pem"
     $PHP_CLI -v
     $PHP_CLI sync-source-code.php --action run
     exit 0

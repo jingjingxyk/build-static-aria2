@@ -24,6 +24,9 @@ bash sapi/quickstart/macos/macos-init.sh
 
 brew cleanup
 
+
+ls -lh ~/Library/Caches
+
 ```
 
 ## [进入构建 PHP 环节](../README.md#构建依赖库-构建swoole-打包)
@@ -32,3 +35,41 @@ brew cleanup
 
 > 用这个名称 `host.docker.internal` 保证本机 IP 变化，服务仍然可用
 
+> host.docker.internal:host-gateway
+
+# macports 用于老版本 macos
+
+    https://www.macports.org/install.php
+
+## 测试 macos 环境
+
+`
+
+xcode-select --install
+sudo xcode-select -s /Library/Developer/CommandLineTools
+
+xcode-select --print-path
+
+git --version
+clang --version
+make --version
+cmake --version
+
+`
+
+## 对于老款macos 使用 macports
+
+```bash
+# 下载 macports
+bash sapi/quickstart/macos/macports-download.sh
+# 进入 var 目录 手动安装 macports
+
+# 换源
+# sudo vi /opt/local/etc/macports/sources.conf
+
+sudo sed -i '' 's|^rsync://macports\.org.*$default$$|#&|' /opt/local/etc/macports/sources.conf
+
+sudo port -v sync
+
+sudo port selfupdate
+```

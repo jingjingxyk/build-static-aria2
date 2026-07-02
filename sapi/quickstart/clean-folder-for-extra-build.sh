@@ -21,49 +21,111 @@ fi
 echo '正在执行删除无关的文件或者文件夹'
 
 cd ${__PROJECT__}
+
+test -f download-chromium-chromium.sh && rm -rf download-chromium-chromium.sh
+test -f download-chromium-webrtc.sh && rm -rf download-chromium-webrtc.sh
+test -f setup-ajax-libs.sh && rm -rf setup-ajax-libs.sh
 test -f setup-aria2-runtime.sh && rm -rf setup-aria2-runtime.sh
+test -f setup-blender-runtime.sh && rm -rf setup-blender-runtime.sh
+test -f setup-casdoor-runtime.sh && rm -rf setup-casdoor-runtime.sh
+test -f setup-cloudreve-bin-runtime.sh && rm -rf setup-cloudreve-bin-runtime.sh
+test -f setup-cloudreve-runtime.sh && rm -rf setup-cloudreve-runtime.sh
 test -f setup-coturn-runtime.sh && rm -rf setup-coturn-runtime.sh
+test -f setup-depot_tools.sh && rm -rf setup-depot_tools.sh
+test -f setup-drawdb.sh && rm -rf setup-drawdb.sh
+test -f setup-drawio.sh && rm -rf setup-drawio.sh
+test -f setup-easytier-runtime.sh && rm -rf setup-easytier-runtime.sh
+test -f setup-electron.sh && rm -rf setup-electron.sh
 test -f setup-ffmpeg-runtime.sh && rm -rf setup-ffmpeg-runtime.sh
+test -f setup-filebrowser-runtime.sh && rm -rf setup-filebrowser-runtime.sh
+test -f setup-fnos.sh && rm -rf setup-fnos.sh
+test -f setup-fossflow.sh && rm -rf setup-fossflow.sh
+test -f setup-freeswitch.sh && rm -rf setup-freeswitch.sh
+test -f setup-geogebra.sh && rm -rf setup-geogebra.sh
+test -f setup-gimp-runtime.sh && rm -rf setup-gimp-runtime.sh
+test -f setup-go-gost-runtime.sh && rm -rf setup-go-gost-runtime.sh
 test -f setup-go-runtime.sh && rm -rf setup-go-runtime.sh
+test -f setup-goreleaser-runtime.sh && rm -rf setup-goreleaser-runtime.sh
+test -f setup-immich.sh && rm -rf setup-immich.sh
+test -f setup-iperf3-runtime.sh && rm -rf setup-iperf3-runtime.sh
+test -f setup-libcef.sh && rm -rf setup-libcef.sh
+test -f setup-linyaps-runtime.sh && rm -rf setup-linyaps-runtime.sh
+test -f setup-localsend-runtime.sh && rm -rf setup-localsend-runtime.sh
+test -f setup-moonlight-runtime.sh && rm -rf setup-moonlight-runtime.sh
 test -f setup-nginx-runtime.sh && rm -rf setup-nginx-runtime.sh
+test -f setup-ninja-runtime.sh && rm -rf setup-ninja-runtime.sh
+test -f setup-nix-runtime.sh && rm -rf setup-nix-runtime.sh
 test -f setup-nodejs-runtime.sh && rm -rf setup-nodejs-runtime.sh
+test -f setup-openjdk-runtime.sh && rm -rf setup-openjdk-runtime.sh
+test -f setup-openssh-runtime.sh && rm -rf setup-openssh-runtime.sh
+test -f setup-openwrt.sh && rm -rf setup-openwrt.sh
+test -f setup-php-cli-7.3-runtime.sh && rm -rf setup-php-cli-7.3-runtime.sh
+test -f setup-php-cli-7.4-runtime.sh && rm -rf setup-php-cli-7.4-runtime.sh
 test -f setup-php-cli-runtime.sh && rm -rf setup-php-cli-runtime.sh
+test -f setup-php-fpm-7.4-runtime.sh && rm -rf setup-php-fpm-7.4-runtime.sh
 test -f setup-php-fpm-runtime.sh && rm -rf setup-php-fpm-runtime.sh
+
 test -f setup-privoxy-runtime.sh && rm -rf setup-privoxy-runtime.sh
+test -f setup-proxmox-pve.sh && rm -rf setup-proxmox-pve.sh
+test -f setup-python3-runtime.sh && rm -rf setup-python3-runtime.sh
+test -f setup-qemu-user-static-runtime.sh && rm -rf setup-qemu-user-static-runtime.sh
+test -f setup-runtime.md && rm -rf setup-runtime.md
+test -f setup-rustfs-runtime.sh && rm -rf setup-rustfs-runtime.sh
+test -f setup-seaweedfs-runtime.sh && rm -rf setup-seaweedfs-runtime.sh
 test -f setup-socat-runtime.sh && rm -rf setup-socat-runtime.sh
+test -f setup-sunshine-runtime.sh && rm -rf setup-sunshine-runtime.sh
 test -f setup-supervisord.sh && rm -rf setup-supervisord.sh
 test -f setup-swoole-cli-pre-runtime.sh && rm -rf setup-swoole-cli-pre-runtime.sh
-test -f setup-webBenchmark-runtime.sh && rm -rf setup-webBenchmark-runtime.sh
-test -f setup-swow-cli-runtime.sh && rm -rf setup-swow-cli-runtime.sh
-test -f setup-php-fpm-7.4-runtime.sh && rm -rf setup-php-fpm-7.4-runtime.sh
-test -f setup-swoole-cli-runtime.sh && rm -rf setup-swoole-cli-runtime.sh
-test -f setup-php-cli-7.4-runtime.sh && rm -rf setup-php-cli-7.4-runtime.sh
-test -f setup-php-cli-7.3-runtime.sh && rm -rf setup-php-cli-7.3-runtime.sh
 test -f setup-swoole-cli-runtime.bat && rm -rf setup-swoole-cli-runtime.bat
 test -f setup-swoole-cli-runtime.ps1 && rm -rf setup-swoole-cli-runtime.ps1
-test -f setup-iperf3-runtime.sh && rm -rf setup-iperf3-runtime.sh
-test -f setup-openssh-runtime.sh && rm -rf setup-openssh-runtime.sh
+test -f setup-swoole-cli-runtime.sh && rm -rf setup-swoole-cli-runtime.sh
+test -f setup-swoole-docs.sh && rm -rf setup-swoole-docs.sh
+test -f setup-swow-cli-runtime.sh && rm -rf setup-swow-cli-runtime.sh
+test -f setup-threejs-editor.sh && rm -rf setup-threejs-editor.sh
+test -f three.js-editor.sh && rm -rf three.js-editor.sh
 test -f setup-ttyd-runtime.sh && rm -rf setup-ttyd-runtime.sh
+test -f setup-ventoy.sh && rm -rf setup-ventoy.sh
+test -f setup-virtualbox.sh && rm -rf setup-virtualbox.sh
+test -f setup-webBenchmark-runtime.sh && rm -rf setup-webBenchmark-runtime.sh
 test -f setup-webdav-runtime.sh && rm -rf setup-webdav-runtime.sh
+test -f setup-websocat-runtime.sh && rm -rf setup-websocat-runtime.sh
+test -f setup-wstunnel-runtime.sh && rm -rf setup-wstunnel-runtime.sh
+test -f setup-yt-dlp-ffmpeg-runtime.sh && rm -rf setup-yt-dlp-ffmpeg-runtime.sh
 
 cd ${__PROJECT__}/
 test -f .clang-format && rm -f .clang-format
 test -f .gdbinit && rm -f .gdbinit
 test -f sync-source-code.php && rm -f sync-source-code.php
-test -f setup-runtime.md && rm -rf setup-runtime.md
+
 test -f diff.php && rm -rf diff.php
 test -f run-tests.php && rm -rf run-tests.php
-test -f privoxy.sh && rm -rf privoxy.sh
-test -f tools/ssh-d.sh && rm -rf tools/ssh-d.sh
-test -f tools/ssh-j.sh && rm -rf tools/ssh-j.sh
-test -f tools/ssh-l.sh && rm -rf tools/ssh-l.sh
-test -f tools/ssh-r.sh && rm -rf tools/ssh-r.sh
-test -f tools/socat-r.sh && rm -rf tools/socat-r.sh
-test -f tools/upload-file-server/index.html && rm -rf tools/upload-file-server/index.html
-test -f tools/upload-file-server/php.ini && rm -rf tools/upload-file-server/php.ini
-test -f tools/upload-file-server/upload.php && rm -rf tools/upload-file-server/upload.php
-test -f tools/upload-file-server/.gitignore && rm -rf tools/upload-file-server/.gitignore
-test -f tools/upload-file-server/start-server.sh && rm -rf tools/upload-file-server/start-server.sh
+
+
+
+cd ${__PROJECT__}/tools/
+test -f upload-file-server/index.html && rm -rf upload-file-server/index.html
+test -f upload-file-server/php.ini && rm -rf upload-file-server/php.ini
+test -f upload-file-server/upload.php && rm -rf upload-file-server/upload.php
+test -f upload-file-server/.gitignore && rm -rf upload-file-server/.gitignore
+test -f upload-file-server/start-server.sh && rm -rf upload-file-server/start-server.sh
+
+test -f download-coturn-artifacts.sh && rm -rf download-coturn-artifacts.sh
+test -f download-nginx-artifacts.sh && rm -rf download-nginx-artifacts.sh
+test -f download-openssh-artifacts.sh && rm -rf download-openssh-artifacts.sh
+test -f download-php-cli-artifacts.sh && rm -rf download-php-cli-artifacts.sh
+test -f download-php-fpm-artifacts.sh && rm -rf download-php-fpm-artifacts.sh
+test -f download-privoxy-artifacts.sh && rm -rf download-privoxy-artifacts.sh
+test -f download-runtime.sh && rm -rf download-runtime.sh
+test -f download-socat-artifacts.sh && rm -rf download-socat-artifacts.sh
+test -f download-ttyd-artifacts.sh && rm -rf download-ttyd-artifacts.sh
+test -f download-video.sh && rm -rf download-video.sh
+
+test -f socat-r.sh && rm -rf socat-r.sh
+test -f ssh-d.sh && rm -rf ssh-d.sh
+test -f ssh-j.sh && rm -rf ssh-j.sh
+test -f ssh-l.sh && rm -rf ssh-l.sh
+test -f ssh-r.sh && rm -rf ssh-r.sh
+
 
 cd ${__PROJECT__}/sapi/
 test -d build-dependencies-container && rm -rf build-dependencies-container
@@ -73,14 +135,44 @@ test -d lib && rm -rf lib
 
 cd ${__PROJECT__}/sapi/scripts/
 test -f build-swoole-cli-alpine-container.sh && rm -rf build-swoole-cli-alpine-container.sh
+test -f build-swoole-cli-with-linux-gcc.sh && rm -rf build-swoole-cli-with-linux-gcc.sh
+test -f copy-depend-libs.php && rm -rf copy-depend-libs.php
+test -f cygwin-install-depend.sh && rm -rf cygwin-install-depend.sh
 test -f download-php-src-archive.php && rm -rf download-php-src-archive.php
+test -f download-swoole-src-archive.sh && rm -rf download-swoole-src-archive.sh
+test -f generate-artifact-hash.sh && rm -rf generate-artifact-hash.sh
+test -f install-deps-on-ubuntu.sh && rm -rf install-deps-on-ubuntu.sh
+test -f msys2-cygwin-install-depend.sh && rm -rf msys2-cygwin-install-depend.sh
+test -f pack-sfx.php && rm -rf pack-sfx.php
 test -f tencent-cloud-object-storage.sh && rm -rf tencent-cloud-object-storage.sh
 test -f tencent-cloud-object-storage.yaml && rm -rf tencent-cloud-object-storage.yaml
-test -f pack-sfx.php && rm -rf pack-sfx.php
-test -f generate-artifact-hash.sh && rm -rf generate-artifact-hash.sh
-test -f msys2-cygwin-install-depend.sh && rm -rf msys2-cygwin-install-depend.sh
-test -f msys2/prepare-no-use.sh && rm -rf msys2/prepare-no-use.sh
-test -f cygwin-install-depend.sh && rm -rf cygwin-install-depend.sh
+
+
+cd ${__PROJECT__}/sapi/scripts/msys2/
+test -f prepare-no-use.sh && rm -rf prepare-no-use.sh
+
+test -f install-deps-lib.sh && rm -rf install-deps-lib.sh
+test -f install-libavif.sh && rm -rf install-libavif.sh
+test -f install-liboniguruma.sh && rm -rf install-liboniguruma.sh
+test -f install-libwebp.sh && rm -rf install-libwebp.sh
+
+test -f install-freetype.sh && rm -rf install-freetype.sh
+test -f install-libgav1.sh && rm -rf install-libgav1.sh
+test -f install-libpng.sh && rm -rf install-libpng.sh
+test -f install-libyuv.sh && rm -rf install-libyuv.sh
+
+test -f install-imagemagick.sh && rm -rf install-imagemagick.sh
+test -f install-libgif.sh && rm -rf install-libgif.sh
+test -f install-libpq.sh && rm -rf install-libpq.sh
+test -f install-libzip.sh && rm -rf install-libzip.sh
+
+test -f install-libaom.sh && rm -rf install-libaom.sh
+test -f install-libjpeg.sh && rm -rf install-libjpeg.sh
+test -f install-libsodium.sh && rm -rf install-libsodium.sh
+
+cd ${__PROJECT__}/sapi/scripts/cygwin/
+test -f test-single-extension.sh && rm -rf test-single-extension.sh
+test -f cygwin-pack.php && rm -rf cygwin-pack.php
 
 cd ${__PROJECT__}/sapi/src/
 test -d library_builder && rm -rf library_builder
@@ -90,48 +182,58 @@ test -d tests && rm -rf tests
 cd ${__PROJECT__}/sapi/src/builder/
 test -d library_shared && rm -rf library_shared
 
-cd ${__PROJECT__}/sapi/docker/
-test -d database && rm -rf database
-test -d database-ui && rm -rf database-ui
-test -d elasticsearch && rm -rf elasticsearch
-test -d grafana && rm -rf grafana
-test -d minio && rm -rf minio
-test -d mysql && rm -rf mysql
-test -d neo4j && rm -rf neo4j
-test -d nginx && rm -rf nginx
-test -d postgis && rm -rf postgis
-test -d rabbitmq && rm -rf rabbitmq
-test -d redis && rm -rf redis
-test -d gitea && rm -rf gitea
-test -d postgresql && rm -rf postgresql
-test -d zerotier && rm -rf zerotier
-test -d coturn && rm -rf coturn
+if [ -d ${__PROJECT__}/sapi/docker/ ]; then
+  cd ${__PROJECT__}/sapi/docker/
+  test -d database && rm -rf database
+  test -d database-ui && rm -rf database-ui
+  test -d elasticsearch && rm -rf elasticsearch
+  test -d grafana && rm -rf grafana
+  test -d minio && rm -rf minio
+  test -d mysql && rm -rf mysql
+  test -d neo4j && rm -rf neo4j
+  test -d nginx && rm -rf nginx
+  test -d postgis && rm -rf postgis
+  test -d rabbitmq && rm -rf rabbitmq
+  test -d redis && rm -rf redis
+  test -d gitea && rm -rf gitea
+  test -d postgresql && rm -rf postgresql
+  test -d zerotier && rm -rf zerotier
+  test -d coturn && rm -rf coturn
+  test -d code-server && rm -rf code-server
+  test -d prometeus && rm -rf prometeus
+  test -d theia-ide && rm -rf theia-ide
+  test -f build-export-container.sh && rm -f build-export-container.sh
+  test -f docker-compose.md && rm -f docker-compose.md
+  test -f Dockerfile && rm -f Dockerfile
+  test -f README.md && rm -f README.md
+fi
 
 cd ${__PROJECT__}/.github/workflows
-test -f ceph.yml && rm -rf ceph.yml
-test -f kubernetes.yml && rm -rf kubernetes.yml
-test -f ovn.yml && rm -rf ovn.yml
-test -f build-debian-builder-container.sh && rm -rf build-debian-builder-container.sh
-test -f download-webrtc.yml && rm -rf download-webrtc.yml
-test -f windows-native-2022.yml && rm -rf windows-native-2022.yml
-test -f windows-native-vs2019.yml && rm -rf windows-native-vs2019.yml
-test -f windows-native-vs2022.yml && rm -rf windows-native-vs2022.yml
 test -f artifact-hash.yml && rm -rf artifact-hash.yml
 test -f auto-cache-pool-tarball.yml && rm -rf auto-cache-pool-tarball.yml
-test -f linux-mips64le.yaml && rm -rf linux-mips64le.yaml
-test -f linux-riscv64.yml && rm -rf linux-riscv64.yml
-test -f runner-images.md && rm -rf runner-images.md
-test -f linux-aarch64-qemu.yml && rm -rf linux-aarch64-qemu.yml
+test -f build-debian-builder-container.sh && rm -rf build-debian-builder-container.sh
+test -f build-static-php-push-to-gitee.yml && rm -rf build-static-php-push-to-gitee.yml
+test -f ceph.yml && rm -rf ceph.yml
 test -f docker-install-push-to-gitee.yml && rm -rf docker-install-push-to-gitee.yml
-test -f swoole-cli-push-to-gitee.yml && rm -rf swoole-cli-push-to-gitee.yml
+test -f download-webrtc.yml && rm -rf download-webrtc.yml
+test -f kubernetes.yml && rm -rf kubernetes.yml
+
+test -f linux-glibc.yml && rm -rf linux-glibc.yml
+test -f linux-loongarch.yaml && rm -rf linux-loongarch.yaml
+test -f linux-riscv64.yml && rm -rf linux-riscv64.yml
+
+
 test -f openssh-push-to-gitee.yml && rm -rf openssh-push-to-gitee.yml
+test -f ovn.yml && rm -rf ovn.yml
 test -f push-to-gitee.yml.bak && rm -rf push-to-gitee.yml.bak
 test -f push-to-gitee.yml && rm -rf push-to-gitee.yml
-test -f windows-native-vs2025.yml && rm -rf windows-native-vs2025.yml
-test -f windows-native-2022.yml && rm -rf windows-native-2022.yml
-test -f zerotier2.yml && rm -rf zerotier2.yml
+test -f runner-images.md && rm -rf runner-images.md
+test -f swoole-cli-push-to-gitee.yml && rm -rf swoole-cli-push-to-gitee.yml
 test -f tailscale.yml && rm -rf tailscale.yml
-test -f build-static-php-push-to-gitee.yml && rm -rf build-static-php-push-to-gitee.yml
+
+test -f windows-native-vs2025.yml && rm -rf windows-native-vs2025.yml
+test -f zerotier2.yml && rm -rf zerotier2.yml
+
 
 cd ${__PROJECT__}/sapi/quickstart
 test -d swoole-install && rm -rf swoole-install
