@@ -11,7 +11,8 @@ return function (Preprocessor $p) {
     $cppflags = '';
     $ldflags = '';
     $libs = $p->isMacos() ? '-lc++' : ' -lstdc++ ';
-    $options = $p->isMacos() ? '--without-appletls ' : '';
+    $options = $p->isMacos() ? ' --without-appletls ' : '';
+    $is_macos = $p->isMacos() ? 1 : 0;
     $dependentLibraries = [
         'libuv',
         'zlib',
@@ -30,7 +31,7 @@ return function (Preprocessor $p) {
 
     $dependentLibraries[] = 'gettext';
 
-    if ($p->isLinux()) {
+    if ($p->isMacos()) {
         $cppflags .= " -I{$gettext_prefix}/include ";
         $ldflags .= " -L{$gettext_prefix}/lib ";
         $libs .= '   -lintl ';
@@ -45,6 +46,11 @@ return function (Preprocessor $p) {
             ->withBuildCached(false)
             ->withConfigure(
                 <<<EOF
+            IS_MACOS={$is_macos}
+            if test \$IS_MACOS -eq 1; then
+                sed -i.'.bak' "s/__APPLE__/__APPXLE__/" src/SimpleRandomizer.cc
+            fi
+
             ./configure --help
             set -x
             PACKAGES='zlib openssl sqlite3 nettle libxml-2.0 libcares'
