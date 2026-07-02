@@ -94,5 +94,4 @@ git submodule update --init --recursive
 ## 容器仓库
 
 1. [dockerhub](https://hub.docker.com/search?image_filter=official)
-1. [开放原子容器镜像仓库](https://hub.atomgit.com/)
 
