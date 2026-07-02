@@ -11,6 +11,7 @@ return function (Preprocessor $p) {
     $cppflags = '';
     $ldflags = '';
     $libs = $p->isMacos() ? '-lc++' : ' -lstdc++ ';
+    $options = $p->isMacos() ? '--without-appletls ' : '';
     $dependentLibraries = [
         'libuv',
         'zlib',
@@ -79,9 +80,8 @@ return function (Preprocessor $p) {
             --without-libssh2 \
             --without-wintls \
             --without-gnutls \
-            --without-libgcrypt
-            # --without-appletls \
-            # --with-tcmalloc
+            --without-libgcrypt \
+            {$options}
 EOF
             )
             ->withBinPath($aria2_prefix . '/bin/')
