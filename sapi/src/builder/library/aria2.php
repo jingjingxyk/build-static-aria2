@@ -31,11 +31,10 @@ return function (Preprocessor $p) {
 
     $dependentLibraries[] = 'gettext';
 
-    if ($p->isMacos()) {
-        $cppflags .= " -I{$gettext_prefix}/include ";
-        $ldflags .= " -L{$gettext_prefix}/lib ";
-        $libs .= '   -lintl ';
-    }
+    $cppflags .= " -I{$gettext_prefix}/include ";
+    $ldflags .= " -L{$gettext_prefix}/lib ";
+    $libs .= '   -lintl ';
+
     $p->addLibrary(
         (new Library('aria2'))
             ->withHomePage('https://aria2.github.io/')
