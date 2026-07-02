@@ -53,6 +53,7 @@ uv run python --version
 # uv add yt-dlp
 
 # uvx yt-dlp
+# pip install "yt-dlp[default,curl-cffi]"
 
 # 使用 uv 的全局安装功能 (如果 uv 版本支持)
 # uv tool install yt-dlp
